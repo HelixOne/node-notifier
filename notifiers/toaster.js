@@ -64,12 +64,13 @@ WindowsToaster.prototype.notify = function (options, callback) {
   if (!appName) {
 	   appName = path.basename(process.execPath, '.exe');
   }
+  var shortcutDir = options.shortcutDir || '';
 
   argsList.push('-i');
   argsList.push(appName + '.appid');
   argsList.push('-l');
   argsList.push(process.execPath);
-  argsList.push(path.join(process.env.APPDATA, '\\Microsoft\\Windows\\Start Menu\\Programs\\' + appName + '.lnk'));
+  argsList.push(path.join(process.env.APPDATA, '\\Microsoft\\Windows\\Start Menu\\Programs\\', shortcutDir, appName + '.lnk'));
 
   utils.fileCommand(this.options.customPath || notifier, argsList, actionJackedCallback);
   return this;
