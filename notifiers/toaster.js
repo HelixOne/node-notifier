@@ -41,8 +41,6 @@ WindowsToaster.prototype.notify = function (options, callback) {
     return false;
   });
 
-  options.title = options.title || 'Node Notification:';
-
   if (!options.message) {
     callback(new Error('Message is required.'));
     return this;
